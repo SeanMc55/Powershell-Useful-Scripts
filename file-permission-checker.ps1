@@ -1,3 +1,7 @@
+Write-Output "Welcome to the file permission checker"
+Write-Output "You will be asked for directories, please enter one per line, then press return"
+Write-Output ""
+
 Do {
     $inputFound = $true
     $inputValue = Read-Host "Enter a directory to search"
@@ -15,7 +19,7 @@ $inputList
 
 Write-Output "Do you want to test just directories, or files too"
 Write-Output "Enter 'dirs' for just directories, or 'files' to include files"
-$filedirchoice = Read-Host -Prompt ""
+$filedirchoice = Read-Host -Prompt "Input"
 
 If ($filedirchoice -eq "files" ) {
     $dirs = $inputList | Get-ChildItem
@@ -37,4 +41,7 @@ $acls = foreach($dir in $dirs)
 
 }
 
-$acls | Select-String -Pattern "Failed to process" | Out-File "C:\Users\Sean McMillin\Desktop\All - Permissions - Test.txt"
+$scriptDir = Split-Path -Path $MyInvocation.MyCommand.Definition -Parent
+$scriptDir = $scriptDir + "\permissions.txt"
+
+$acls | Select-String -Pattern "Failed to process" | Out-File $scriptDir
