@@ -6,19 +6,23 @@ Do {
             $inputFound = $false    
     }
     Else {
-        # Write-Output $inputValue 
-        # [array]$inputList = $inputList + ('"' + $inputValue + '\*"')
-        [array]$inputList = $inputList + $inputValue
+        [array]$inputList = $inputList + ($inputValue + "\*")
     }
 }
 While ($inputFound -eq $true)
 
 $inputList
 
+Write-Output "Do you want to test just directories, or files too"
+Write-Output "Enter 'dirs' for just directories, or 'files' to include files"
+$filedirchoice = Read-Host -Prompt ""
 
-# $dirs = Get-ChildItem "X:\*", "X:\*\*", "X:\*\*\*", "X:\*\*\*\*", "X:\*\*\*\*\*"
-# $dirs = Get-ChildItem ('"{0}"' -f $($inputList -join '","')) | where-object {($_.PsIsContainer)}
-$dirs = $inputList | Get-ChildItem | where-object {($_.PsIsContainer)}
+If ($filedirchoice -eq "files" ) {
+    $dirs = $inputList | Get-ChildItem
+}
+Else {
+    $dirs = $inputList | Get-ChildItem | where-object {($_.PsIsContainer)}
+}
 
 $acls = foreach($dir in $dirs)
 {
@@ -32,5 +36,5 @@ $acls = foreach($dir in $dirs)
     }
 
 }
-# $acls | Select-String -Pattern "Failed to process" | Out-File "C:\Users\Sean McMillin\Desktop\All - Permissions.txt"
+
 $acls | Select-String -Pattern "Failed to process" | Out-File "C:\Users\Sean McMillin\Desktop\All - Permissions - Test.txt"
