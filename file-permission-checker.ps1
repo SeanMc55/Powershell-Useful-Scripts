@@ -15,6 +15,7 @@ Do {
 }
 While ($inputFound -eq $true)
 
+Write-Output "Will process the following"
 $inputList
 
 Write-Output "Do you want to test just directories, or files too"
