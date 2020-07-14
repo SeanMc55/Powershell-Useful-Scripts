@@ -101,6 +101,9 @@ Write-Output "Do you want to test just directories, or files too"
 Write-Output "Enter 'dirs' for just directories, or 'files' to include files"
 $filedirchoice = Read-Host -Prompt "Input"
 
+Write-Output "Files are being scanned"
+
+
 If ($filedirchoice -eq "files" ) {
     $dirs = $inputList | Get-ChildItem
 }
@@ -125,3 +128,5 @@ $scriptDir = Split-Path -Path $MyInvocation.MyCommand.Definition -Parent
 $scriptDir = $scriptDir + "\permissions.txt"
 
 $acls | Select-String -Pattern "Failed to process" | Out-File $scriptDir
+
+Write-Output "Done Processing"
