@@ -5,7 +5,7 @@ Write-Output ""
 Do {
     $inputFound = $true
     $inputValue = Read-Host "Enter a directory to search"
-    $inputDepth = Read-Host "How many levels deep?"
+    $inputDepth = Read-Host "How many levels deep? 1-10"
     
     If ( $inputValue -eq "" ) {
             $inputFound = $false    
@@ -54,6 +54,39 @@ Do {
         [array]$inputList = $inputList + ($inputValue + "\*\*\*\*\*")
         [array]$inputList = $inputList + ($inputValue + "\*\*\*\*\*\*")
         [array]$inputList = $inputList + ($inputValue + "\*\*\*\*\*\*\*")
+    }
+    If ( $inputDepth -eq "8" ) {
+        [array]$inputList = $inputList + ($inputValue + "\*")
+        [array]$inputList = $inputList + ($inputValue + "\*\*")
+        [array]$inputList = $inputList + ($inputValue + "\*\*\*")
+        [array]$inputList = $inputList + ($inputValue + "\*\*\*\*")
+        [array]$inputList = $inputList + ($inputValue + "\*\*\*\*\*")
+        [array]$inputList = $inputList + ($inputValue + "\*\*\*\*\*\*")
+        [array]$inputList = $inputList + ($inputValue + "\*\*\*\*\*\*\*")
+        [array]$inputList = $inputList + ($inputValue + "\*\*\*\*\*\*\*\*")
+    }
+    If ( $inputDepth -eq "9" ) {
+        [array]$inputList = $inputList + ($inputValue + "\*")
+        [array]$inputList = $inputList + ($inputValue + "\*\*")
+        [array]$inputList = $inputList + ($inputValue + "\*\*\*")
+        [array]$inputList = $inputList + ($inputValue + "\*\*\*\*")
+        [array]$inputList = $inputList + ($inputValue + "\*\*\*\*\*")
+        [array]$inputList = $inputList + ($inputValue + "\*\*\*\*\*\*")
+        [array]$inputList = $inputList + ($inputValue + "\*\*\*\*\*\*\*")
+        [array]$inputList = $inputList + ($inputValue + "\*\*\*\*\*\*\*\*")
+        [array]$inputList = $inputList + ($inputValue + "\*\*\*\*\*\*\*\*\*")
+    }
+    If ( $inputDepth -eq "10" ) {
+        [array]$inputList = $inputList + ($inputValue + "\*")
+        [array]$inputList = $inputList + ($inputValue + "\*\*")
+        [array]$inputList = $inputList + ($inputValue + "\*\*\*")
+        [array]$inputList = $inputList + ($inputValue + "\*\*\*\*")
+        [array]$inputList = $inputList + ($inputValue + "\*\*\*\*\*")
+        [array]$inputList = $inputList + ($inputValue + "\*\*\*\*\*\*")
+        [array]$inputList = $inputList + ($inputValue + "\*\*\*\*\*\*\*")
+        [array]$inputList = $inputList + ($inputValue + "\*\*\*\*\*\*\*\*")
+        [array]$inputList = $inputList + ($inputValue + "\*\*\*\*\*\*\*\*\*")
+        [array]$inputList = $inputList + ($inputValue + "\*\*\*\*\*\*\*\*\*\*")
     }
     # Else {
     #     [array]$inputList = $inputList + ($inputValue + "\*")
