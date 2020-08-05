@@ -11,16 +11,19 @@ Do {
             $inputFound = $false    
     }
     Else {
-        $inputValue = $inputValue + (','+$inputValue)
+        $inputValues = $inputValues  + $inputValue + ','
     }
 }
 While ($inputFound -eq $true)
 
+$inputValues = $inputValues.Substring(0,$inputValues.Length-1)
+
 Write-Output "Will process the following"
-$inputValue
+$inputValues
 ##
 Write-Output "Files are being scanned..."
-$files = Get-Childitem -Path $inputPath -Include $inputValue -File -Recurse -ErrorAction SilentlyContinue
+# $files = Get-Childitem -Path $inputPath -Include $inputValues -File -Recurse -ErrorAction SilentlyContinue
+$files = Get-Childitem -Path $inputPath -Include *.WPD,*.WB3,*.WP,*.WPT,*.WPG,*.WB -File -Recurse -ErrorAction SilentlyContinue
 
 ##
 # Get-Childitem -Path X:\ -Include *.WP,*.WPD,*.WB3 -File -Recurse -ErrorAction SilentlyContinue
